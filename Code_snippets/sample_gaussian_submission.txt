@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=gaussianjob
+#SBATCH --output=gaussian.out
+#SBATCH --error=gaussian.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=nterrel@ufl.edu
+#SBATCH --time=01:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4    # number of CPU core to use
+#SBATCH --mem-per-cpu=4000
+#SBATCH --account=Roitberg
+#SBATCH --qos=Roitberg
+
+module load gaussian
+
+which g09
+
+input=YOUR_g09_input.com
+output=YOUR_OUTPUT.log
+
+g09 < $input > $output
